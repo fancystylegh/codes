@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <title>reader</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="root" class="container">
+        <div class="m-artical-action">
+            <div id="action_mid" class="artical-action-mid"></div>
+        </div>
+        <div id="top-nav" class="top-nav" style="display: none">
+            <div class="icon-back"></div>
+            <div class="nav-title">返回书架</div>
+        </div>
+        <div id="fiction_chapter_title"></div>
+        <div id="fiction_container" class="m-read-content">
+            <h4>倒写名著</h4>
+            <p>话说天下大势，合久必分分，分久必合</p>
+            <p>唐末群雄纷争，并入隋朝。及隋之后，南北朝十六国纷争，又并入晋。晋安帝废刘裕而自立，一统江南。后来元帝中兴，传至武帝，遂分为三国。推其致乱为由，殆始于晋惠帝食肉糜。</p>
+            <p>唐末群雄纷争，并入隋朝。及隋之后，南北朝十六国纷争，又并入晋。晋安帝废刘裕而自立，一统江南。后来元帝中兴，传至武帝，遂分为三国。推其致乱为由，殆始于晋惠帝食肉糜。唐末群雄纷争，并入隋朝。及隋之后，南北朝十六国纷争，又并入晋。晋安帝废刘裕而自立，一统江南。后来元帝中兴，传至武帝，遂分为三国。推其致乱为由，殆始于晋惠帝食肉糜。</p>
+            <p>唐末群雄纷争，并入隋朝。及隋之后，南北朝十六国纷争，又并入晋。晋安帝废刘裕而自立，一统江南。后来元帝中兴，传至武帝，遂分为三国。推其致乱为由，殆始于晋惠帝食肉糜。唐末群雄纷争，并入隋朝。及隋之后，南北朝十六国纷争，又并入晋。晋安帝废刘裕而自立，一统江南。后来元帝中兴，传至武帝，遂分为三国。推其致乱为由，殆始于晋惠帝食肉糜。唐末群雄纷争，并入隋朝。及隋之后，南北朝十六国纷争，又并入晋。晋安帝废刘裕而自立，一统江南。后来元帝中兴，传至武帝，遂分为三国。推其致乱为由，殆始于晋惠帝食肉糜。唐末群雄纷争，并入隋朝。及隋之后，南北朝十六国纷争，又并入晋。晋安帝废刘裕而自立，一统江南。后来元帝中兴，传至武帝，遂分为三国。推其致乱为由，殆始于晋惠帝食肉糜。唐末群雄纷争，并入隋朝。及隋之后，南北朝十六国纷争，又并入晋。晋安帝废刘裕而自立，一统江南。后来元帝中兴，传至武帝，遂分为三国。推其致乱为由，殆始于晋惠帝食肉糜。</p>
+        </div>
+        <div class="m-button-bar">
+            <ul class="u-tab">
+                <li id="prev_button">上一章</li>
+                <li id="next_button">下一章</li>
+            </ul>
+        </div>
+        <div class="nav-pannel-bk font-container"style="display: none"></div>
+        <div class="nav-pannel font-container" id="foot-container" style="display: none">
+            <div class="child-mod">
+                <span>字号</span>
+                <button id="large-font" class="font-size-button">大</button>
+                <button id="small-font" class="font-size-button">小</button>
+            </div>
+            <div class="child-mod">
+                <span>背景</span>
+                <div class="bk-container" style="background: #fff;">
+                    <div class="bk-container-current"></div>
+                </div>
+                <div class="bk-container" style="background: #d0aaff;">
+                    <div class="bk-container-current"></div>
+                </div>
+                <div class="bk-container" style="background: #92ffa5;">
+                    <div class="bk-container-current"></div>
+                </div>
+                <div class="bk-container" style="background: #6e6c6e;">
+                    <div class="bk-container-current"></div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-nav-bk bottom_nav" style="display: none"></div>
+        <div class="bottom-nav bottom_nav" style="display: none">
+            <div class="item menu-button" id="menu_button">
+                <div class="item-wrap">
+                    <div class="icon-menu"></div>
+                    <div class="icon-text">目录</div>
+                </div>
+                <div class="item" id="foot-button">
+                    <div class="item-wrap">
+                        <div class="icon-ft"></div>
+                        <div class="icon-text">字体</div>
+                    </div>
+                </div>
+                <div class="item" id="night-button">
+                    <div class="item-wrap" id="day_icon">
+                        <div class="icon-day"></div>
+                        <div class="icon-text">白天</div>
+                    </div>
+                    <!--<div class="item-wrap" id="night_icon">
+                        <div class="icon-night"></div>
+                        <div class="icon-text">夜间</div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="lib/zepto.min.js"></script>
+    <script>
+        window.jQuery=$;
+    </script>
+    <script src="lib/jquery.base64.js"></script>
+    <script src="lib/jquery.jsonp.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
