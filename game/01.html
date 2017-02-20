@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body onload="init(19,'mylegend',820,500,main,LEvent.INIT)">
+<div id="mylegend">loading......</div>
+<script src="Box2dWeb-2.1.a.3.js"></script>
+<script src="lufylegend-1.10.1.js"></script>
+<script type="text/javascript">
+    var backLayer,cLayer,enemy,gameOver=false,all=0,aim=0,bitmap,checkpoint=1;
+    var point={x:100,y:250};
+    var imgList={};
+/*    var imgData=new Array(
+            {name:'face',path:'../JQueryTest/images/L8.png'}
+    );*/
+    function main(){
+       /* LLoadManage.load(imgData);*/
+        LGlobal.box2d=new LBox2d();
+        backLayer=new LSprite();
+        addChild(backLayer);
+        //建立一组墙壁
+        //backLayer.graphics.drawRect(1,"#cc3300",[0,0,800,10],true,"#cc3300");
+        backLayer.graphics.drawRect(1,"#cc3300",[790,0,10,400],true,"#cc3300");
+        backLayer.graphics.drawRect(1,"#cc3300",[0,0,10,400],true,"#cc3300");
+        backLayer.graphics.drawRect(1,"#cc3300",[0,390,800,10],true,"#cc3300");
+        backLayer.graphics.drawRect(1,"#cc3300",[450,187,50,3],true,"#cc3300");//1
+        backLayer.graphics.drawRect(1,"#cc3300",[500,170,3,20],true,"#cc3300");//2
+        backLayer.graphics.drawRect(1,"#cc3300",[447,187,3,210],true,"#cc3300");//3
+        backLayer.graphics.drawRect(1,"#cc3300",[538,87,3,103],true,"#cc3300");//4  框半径35
+        backLayer.graphics.drawRect(1,"#cc3300",[541,137,70,3],true,"#cc3300");//5
+        backLayer.graphics.drawRect(1,"#cc3300",[611,137,3,263],true,"#cc3300");//6
+        cLayer=new LSprite();
+        backLayer.addChild(cLayer);
+        //通过顶点坐标数组，加入上下左右四面墙
+        var shapeArray=[
+            //[[0,0],[800,0],[800,10],[0,10]],
+            [[790,0],[800,0],[800,400],[790,400]],
+            [[0,0],[10,0],[10,400],[0,400]],
+            [[0,390],[800,390],[800,400],[0,400]],
+            [[450,187],[500,187],[500,190],[450,190]],
+            [[500,170],[503,170],[503,190],[500,190]],
+            [[447,187],[450,187],[450,397],[447,397]],
+            [[538,87],[541,87],[541,190],[538,190]],
+            [[541,137],[611,137],[611,140],[541,140]],
+            [[611,137],[614,137],[614,400],[611,400]]
+        ];
+        cLayer.addBodyVertices(shapeArray,0,0,0,0.5,0.4,0.5);
+        //加入圆  用来添加点击事件来出现小球
+        circle=new LSprite();
+        backLayer.addChild(circle);
+        circle.graphics.drawArc(1,"#336699",[point.x,point.y,40,0,2*Math.PI,true,"#336699"]);
+        //添加游戏说明栏
+        shuoming=new LTextField();
+        shuoming.x=20;
+        shuoming.y=10;
+        shuoming.text='点击左侧圆圈进行投篮,鼠标和圆心的距离控制投篮力度';
+        backLayer.addChild(shuoming);
+        //添加得分栏和命中率栏
+        defen=new LTextField();
+        defen.x=200;
+        defen.y=100;
+        defen.text='得分：0';
+        backLayer.addChild(defen);
+        mingzhong=new LTextField();
+        mingzhong.x=280;
+        mingzhong.y=100;
+        mingzhong.text='命中率：0%';
+        backLayer.addChild(mingzhong);
+        //关卡显示
+        guanqia=new LTextField();
+        guanqia.x=120;
+        guanqia.y=100;
+        guanqia.text='关卡：'+checkpoint;
+        backLayer.addChild(guanqia);
+        //加入鼠标事件  点击鼠标增加小球
+        backLayer.addEventListener(LMouseEvent.MOUSE_DOWN,createBox);
+        //键盘事件
+        //LEvent.addEventListener(window,LKeyboardEvent.KEY_DOWN,down);
+    }
+    function createBox(e){
+        if((e.offsetX-point.x)*(e.offsetX-point.x)+(e.offsetY-point.y)*(e.offsetY-point.y)>40*40)return;
+        var box01=new LSprite();
+        box01.name='mybox';
+        box01.x=e.selfX;
+        box01.y=e.selfY;
+        backLayer.addChild(box01);
+        box01.graphics.drawArc(1,"orange",[16,16,16,0,360*Math.PI/180],true,"orange");
+        box01.addBodyCircle(16,0,0,1,1,0.5,0.6);
+        var angle=Math.atan2(e.offsetY-point.y,e.offsetX-point.x);
+        var force=(Math.sqrt((point.y-e.offsetY)*(point.y-e.offsetY)+(e.offsetX-point.x)*(e.offsetX-point.x))/20)*330;
+        var vec=new LGlobal.box2d.b2Vec2(force*Math.cos(angle),force*Math.sin(angle));
+        box01.box2dBody.ApplyForce(vec,box01.box2dBody.GetWorldCenter());
+        function check(){
+            if(box01.x<610&&box01.x>450&&box01.y<400&&box01.y>180){
+                checkpoint++;
+                aim++;
+                all++;
+                defen.text='得分：'+aim;
+                mingzhong.text='命中率：'+Math.floor(aim/all*100)+'%';
+                if(checkpoint==2){//第二关
+                    rail=new LSprite();
+                    backLayer.addChild(rail);
+                    rail.graphics.drawRect(1,"#cc3300",[220,135,10,255],true,"#cc3300");
+                    raill=new LSprite();
+                    backLayer.addChild(raill);
+                    raill.addBodyVertices([[[220,135],[230,135],[230,390],[220,390]]],0,0,0,0.5,0.4,0.5);
+                }else if(checkpoint==3){//第三关
+                    backLayer.removeChild(rail);
+                    backLayer.removeChild(raill);
+                    rail=new LSprite();
+                    backLayer.addChild(rail);
+                    rail.graphics.drawRect(1,"#cc3300",[220,35,10,355],true,"#cc3300");
+                    raill=new LSprite();
+                    backLayer.addChild(raill);
+                    raill.addBodyVertices([[[220,35],[230,35],[230,390],[220,390]]],0,0,0,0.5,0.4,0.5);
+                }else if(checkpoint==4){//第四关
+                    backLayer.removeChild(rail);
+                    backLayer.removeChild(raill);
+                    rail=new LSprite();
+                    backLayer.addChild(rail);
+                    rail.graphics.drawRect(1,"#cc3300",[10,180,200,10],true,"#cc3300");
+                    raill=new LSprite();
+                    backLayer.addChild(raill);
+                    raill.addBodyVertices([[[10,180],[220,180],[220,190],[10,190]]],0,0,0,0.5,0.4,0.5);
+                }else if(checkpoint>4){//通关
+                    checkpoint=4;
+                    alert('终于通关了！');
+                }
+                guanqia.text='关卡：'+checkpoint;
+            }else{
+                all++;
+                mingzhong.text='命中率：'+Math.floor(aim/all*100)+'%';
+            }
+        }
+        setTimeout(check,2600);
+    }
+    //键盘按下  移动枪口
+    function down(e){
+        if(e.keyCode=='37'){//left
+            point.x-=10;
+        }else if(e.keyCode=='39'){//right
+            point.x+=10;
+        }else if(e.keyCode=='38'){//up
+            point.y-=10;
+        }else if(e.keyCode=='40'){//down
+            point.y+=10;
+        }
+        backLayer.removeChild(circle);
+        circle=new LSprite();
+        backLayer.addChild(circle);
+        circle.graphics.drawArc(1,"#336699",[point.x,point.y,40,0,2*Math.PI,true,"#336699"]);
+    }
+</script>
+</body>
+</html>
