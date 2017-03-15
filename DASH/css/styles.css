@@ -1,0 +1,343 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', 'sans-serif';
+}
+body {
+    margin: 0;
+    position: relative;
+    overflow: auto;
+    font-size: 14px;
+    font-family: 'Roboto', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #fff;
+}
+.container{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', 'sans-serif';
+}
+/*头部信息*/
+.header {
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    z-index: 50;
+    border-radius: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    top: 0;
+}
+.header .navbar {
+    margin: 0;
+    background: #fff;
+    border: 0;
+}
+a {
+    color: #80B421;
+    text-decoration: none;
+    text-shadow: none;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+.header .navbar-brand {
+    float: left;
+    padding: 0;
+    line-height: 0;
+    height: 0;
+    color: #80B421;
+}
+/*媒体查询*/
+@media only screen and (min-width:768px){
+    .header .navbar-brand {
+        padding-left: 0;
+    }
+    .navbar-nav {
+        float: right;
+    }
+}
+.navbar-inverse .navbar-toggle {
+    border-color: #80B421;
+    background-color: #80B421;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #80B421;
+}
+/*导航栏*/
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fff;
+    border-bottom: 2px solid #80B421;
+    box-sizing: border-box;
+    background: #80b421;
+}
+.header .navbar-nav > li > a {
+    padding: 25px 18px;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #858585;
+    font-size: 1.2em;
+    line-height: normal;
+    margin: 17px 10px;
+    padding: 6px 10px !important;
+    border-radius: 5px;
+}
+/*轮播图*/
+#myCarousel {
+    margin-top: 50px;
+    border-bottom: 4px solid #80B421;
+}
+.carousel-inner > .item {
+    /**/
+}
+.carousel-caption {
+    padding: 0;
+    bottom: 40%;
+    display: block;
+    height: 80px;
+}
+/*轮播图片上的标题和内容文字*/
+.carousel-caption h1 {
+    font-size: 45px;
+    padding: 10px 15px;
+    background: rgba(128, 180, 33, 0.80);
+    color: #FFFFFF;
+    text-shadow: none;
+    font-weight: bold;
+    display: inline-block;
+}
+.carousel-caption h3 {
+    font-size: 30px;
+    color: #1C4604;
+    font-weight: bold;
+    text-shadow: #fff 1px 1px 1px;
+}
+/*轮播图下面的*/
+.actionPanel {
+    padding: 25px 0;
+    background: #80B421;
+}
+.actionPanel h3 {
+    text-align: center;
+    margin: 0;
+}
+/*现在就来的按钮样式*/
+.spclBtn {
+    background: rgba(255, 255, 255, 0.73);
+    color: #000;
+}
+.btn {
+    font-weight: 200;
+    border: 0;
+    border-radius: 0;
+}
+.btn, .form-control, .team-socials i {
+    border-radius: 5px !important;
+}
+/*关于我们*/
+.page-section {
+    width: 100%;
+    height: auto;
+    padding: 30px 0;
+}
+.darkBg {
+    background: rgb(44, 44, 44);
+}
+.pdingBtm30 {
+    padding-bottom: 30px;
+}
+
+/*头部文字*/
+.heading {
+    padding-bottom: 30px;
+}
+.page-section h2 {
+    color: #80B421;
+}
+.darkBg h2 {
+    color: #fff;
+}
+.heading p {
+    font-size: 1.2em;
+}
+.page-section p {
+    font-size: 1.1em;
+    line-height: 1.6em;
+}
+.pDark p {
+    color: #6D6D6D;
+}
+p {
+    color: #858585;
+}
+/*下面的三列*/
+.pDark h3 {
+    color: #BEBEBE;
+}
+/*小图标*/
+.darkBg .fa {
+    color: #80B421;
+}
+
+/*产品服务，其他样式一样的*/
+.page-section {
+    width: 100%;
+    height: auto;
+    padding: 30px 0;
+}
+/*小圆图标*/
+.circle {
+    background: #80B421;
+    height: 60px;
+    width: 60px;
+    border-radius: 35px;
+    color: #fff;
+    line-height: 60px !important;
+}
+
+/*案例展示*/
+#portfolio {
+    background: rgb(44, 44, 44);
+}
+nav#filter {
+    margin-bottom: 1.5em;
+}
+nav#filter li {
+    display: inline-block;
+    margin: 0 0 0 5px;
+}
+nav#filter a {
+    padding: 4px 12px;
+    line-height: 20px;
+    border: 1px solid #80B421;
+    text-decoration: none;
+}
+.current {
+    background: #80B421;
+    color: #fff;
+}
+
+/*案例图片的下边距*/
+.isotopeWrapper article {
+   /* margin-bottom: 30px;*/
+    margin:0 40px;
+}
+.isotope-item {
+    z-index: 2;
+}
+.portfolio-item {
+    display: block;
+    position: relative;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.portfolio-item img {
+    -webkit-transition: all 300ms linear;
+    -moz-transition: all 300ms linear;
+    -o-transition: all 300ms linear;
+    -ms-transition: all 300ms linear;
+    transition: all 300ms linear;
+}
+#portfolio img {
+    width: 100%;
+}
+.portfolio-items article img {
+    width: 100%;
+}
+/*图片描述和信息*/
+.portfolio-item .portfolio-desc {
+    display: block;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    color: rgba(220, 220, 220,0.9);
+}
+.portfolio-item .portfolio-desc .folio-info {
+    top: -20px;
+    padding: 30px;
+    height: 0;
+    opacity: 0;
+    position: relative;
+}
+.portfolio-item .portfolio-desc a {
+    color: #fff;
+    text-align: center;
+    display: block;
+}
+.portfolio-item .portfolio-desc .folio-info h5 {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+/*团队*/
+.team-member {
+    padding-top: 5px;
+    margin-bottom: 15px;
+}
+.member-img {
+    border: 2px solid #80B421;
+    border-radius: 188px;
+    overflow: hidden;
+}
+.team-member .member-img img {
+    max-width: 260px;
+    margin: 0 auto;
+    border: 2px #D3D3D3 solid;
+}
+.team-member h3 {
+    font-size: 22px;
+    line-height: 32px;
+    margin: 10px 0 0 15px;
+    text-align: center;
+}
+.pDark h3 {
+    color: #BEBEBE;
+}
+.team-member .pos {
+    display: block;
+    margin: 0 0 0 15px;
+    text-align: center;
+}
+
+/*联系我们*/
+.mrgn30 {
+    margin: 30px 0;
+}
+
+/*底部*/
+footer {
+    background-color: #242424;
+    color: #8e8e8e;
+    font-size: 14px;
+    padding-top: 20px;
+}
+footer ul li {
+    list-style: none;
+}
+.socialIcons li {
+    list-style: none;
+    display: inline;
+    margin-right: 6px;
+}
+.contact ul li {
+    margin-bottom: 10px;
+}
+.contact ul li i {
+    margin-right: 15px;
+}
+
+/*公司信息*/
+.copyright {
+    color: #6D6D6D;
+    background: #131313;
+    padding: 20px 0;
+}
